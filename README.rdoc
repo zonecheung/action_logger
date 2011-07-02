@@ -1,7 +1,8 @@
 ActionLogger
 ============
 
-== Install
+Install
+=======
 
 Add this to your Gemfile:
 
@@ -19,6 +20,8 @@ In application_controller.rb:
 
 Example
 =======
+
+In your controller:
 
   log_request :only => [:index, :show]          # Log only :index and :show actions.
   log_request :except => [:index, :show]        # Log all actions except :index and :show.
