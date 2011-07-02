@@ -7,16 +7,21 @@ Add this to your Gemfile:
 
   gem 'action_logger', "~> 3.0.0", :git => "https://github.com/zonecheung/action_logger.git"
 
-To create the railmail_deliveries table after the gem is installed:
+To create the action_logs table after the gem is installed:
 
   rails generate action_logger_migration
   rake db:migrate
 
+In application_controller.rb:
+
+  include ActionLogger::Base
+  log_request
 
 Example
 =======
 
-Example goes here.
+  log_request :only => [:index, :show]          # Log only :index and :show actions.
+  log_request :except => [:index, :show]        # Log all actions except :index and :show.
+  log_request :method => [:post]                # Log only POST call.
 
-
-Copyright (c) 2011 [name of plugin creator], released under the MIT license
+Copyright (c) 2011 John Tjanaka, released under the MIT license
