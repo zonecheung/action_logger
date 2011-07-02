@@ -1,8 +1,6 @@
-ActionLogger
-============
+= ActionLogger
 
-Install
-=======
+== Install
 
 Add this to your Gemfile:
 
@@ -18,8 +16,7 @@ In application_controller.rb:
   include ActionLogger::Base
   log_request
 
-Example
-=======
+== Example
 
 In your controller:
 
