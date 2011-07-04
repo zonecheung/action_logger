@@ -1,5 +1,8 @@
 .rvmrc
-config/database.yml
 log/*
 tmp/*
 passenger.*
+config/initializers/*
+config/environments/*
+config/*.yml
+config/*.rb
