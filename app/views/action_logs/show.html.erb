@@ -1,0 +1,41 @@
+<h2><%= I18n.t("action_logs.information", :id => @action_log.id) %></h2>
+
+<p class="field-info">
+  <%= label(:action_log, :created_at) %>
+  <%= @action_log.created_at.strftime("%d %b %Y %H:%M:%S") %>
+</p>
+<p class="field-info">
+  <%= label(:action_log, :remote_ip) %>
+  <%= h @action_log.remote_ip %>
+</p>
+<p class="field-info">
+  <%= label(:action_log, :request_method) %>
+  <%= h @action_log.request_method %>
+</p>
+<p class="field-info">
+  <%= label(:action_log, :request_url) %>
+  <%= h @action_log.request_url %>
+</p>
+<p class="field-info">
+  <%= label(:action_log, :user_id) %>
+  <%= h @action_log.user_id %>
+</p>
+<p class="field-info">
+  <%= label(:action_log, :controller) %>
+  <%= h @action_log.controller %>
+</p>
+<p class="field-info">
+  <%= label(:action_log, :action) %>
+  <%= h @action_log.action %>
+</p>
+<p class="field-info">
+  <%= label(:action_log, :request_parameters) %>
+  <span><%= h @action_log.request_parameters %></span>
+</p>
+
+<div class="clear">&nbsp;</div>
+
+<p>
+  <%= link_to I18n.t("shared.back"), action_logs_path %>
+</p>
+

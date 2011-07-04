@@ -1,0 +1,60 @@
+<% content_for :js_libs do %>
+  <%= javascript_include_tag "action_logs" %>
+<% end %>
+
+<%= will_paginate @action_logs %>
+<% form_for :action_logs, :url => action_logs_path do |f| %>
+  <div id="actions">
+    <%= link_to image_tag("icons/delete.png"),
+                destroy_selected_action_logs_path, :method => :delete,
+                :confirm => I18n.t("shared.confirm_delete_selected"),
+                :class => "delete-selected-link" %>
+    <%= link_to I18n.t("shared.delete_selected"),
+                destroy_selected_action_logs_path, :method => :delete,
+                :confirm => I18n.t("shared.confirm_delete_selected"),
+                :class => "delete-selected-link" %>
+  </div>
+  <div class="clear"></div>
+  <table class="list">
+    <tr class="header">
+      <th><%= check_box_tag("action_logs_all", true) %></th>
+      <th><%= I18n.t("activerecord.attributes.action_log.created_at") %></th>
+      <th><%= I18n.t("activerecord.attributes.action_log.remote_ip") %></th>
+      <th><%= I18n.t("activerecord.attributes.action_log.request_method") %></th>
+      <th><%= I18n.t("activerecord.attributes.action_log.request_url") %></th>
+      <th><%= I18n.t("activerecord.attributes.action_log.user_id") %></th>
+      <th colspan="2"></th>
+    </tr>
+
+    <% @action_logs.each do |action_log| %>
+      <tr class="<%= action_log.request_method.downcase %>">
+        <td><%= check_box_tag("action_logs[]", action_log.id, false, :id => "action_logs_#{action_log.id}") %></td>
+        <td><%= action_log.created_at.strftime("%d %b %Y %H:%M:%S") %></td>
+        <td><%= h action_log.remote_ip %></td>
+        <td><%= h action_log.request_method %></td>
+        <td><%= link_to action_log.request_url, action_log.request_url %></td>
+        <td><%= h action_log.user_id %></td>
+        <td><%= link_to image_tag("icons/info.png"), action_log_path(action_log) %></td>
+        <td><%= link_to image_tag("icons/delete.png"), action_log_path(action_log),
+                        :method => :delete, :confirm => I18n.t("shared.confirm_delete") %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+<%= will_paginate @action_logs %>
+<% form_for :action_log, :url => action_logs_path, :html => { :method => :get, :id => "action_logs_form" } do |f| %>
+  <div id="refresh">
+    <%= I18n.t("shared.refresh_after") %>
+    <%= text_field_tag :interval, params[:interval].blank? ? 30 : params[:interval], :size => 1, :maxlength => 5 %>
+    <%= I18n.t("shared.seconds") %>
+  </div>
+  <div id="filter">
+    <%= I18n.t("shared.show") %>
+    <%= text_field_tag :per_page, params[:per_page].blank? ? 20 : params[:per_page],
+                       :size => 1, :maxlength => 5 %>
+    <%= I18n.t("shared.records_per_page") %>
+    <%= f.submit I18n.t("shared.go") %>
+  </div>
+<% end %>
+<div class="clear"></div>
+

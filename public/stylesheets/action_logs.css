@@ -1,0 +1,107 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Verdana, Helvetica, Arial, Tahoma, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif;
+  font-size: 12px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  background-color: gainsboro;
+  color: white;
+  line-height: 45px;
+  margin-top: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-bottom: 1px solid silver;
+}
+
+img {
+  border: none;
+}
+
+.content {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.pagination {
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+table.list {
+  width: 100%;
+  border-top: 1px solid silver;
+  border-bottom: 1px solid silver;
+  border-collapse: collapse;
+}
+
+table.list tr.header {
+  height: 24px;
+  color: gray;
+}
+
+table.list th {
+  text-align: left;
+  border-bottom: 1px solid silver;
+}
+
+table.list tr.post {
+  color: lightcoral;
+}
+
+table.list tr.get {
+  color: mediumaquamarine;
+}
+
+table.list tr.head {
+  color: olive;
+}
+
+table.list tr:hover {
+  background-color: snow;
+}
+
+.clear {
+  clear: both;
+}
+
+.field-info label {
+  float: left;
+  width: 160px;
+  font-weight: bold;
+}
+
+.field-info span {
+  float: left;
+  width: 85%;
+}
+
+#refresh {
+  width: 300px;
+  float: left;
+}
+
+#actions, #filter {
+  width: 300px;
+  float: right;
+  text-align: right;
+}
+
+#actions img {
+  vertical-align: middle;
+}
+
+

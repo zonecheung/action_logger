@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
-  #get "action_logger" => "action_logger#index" , :as => :action_logger
+  resources :action_logs, :only => [:index, :show, :destroy] do
+    delete :destroy_selected, :on => :collection
+  end
 end
 

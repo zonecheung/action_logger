@@ -1,0 +1,30 @@
+en: 
+  activerecord:
+    models:
+      action_log: Action Log
+    attributes: 
+      action_log:
+        created_at: Date
+        remote_ip: Remote IP
+        request_method: Request Method
+        controller: Controller
+        action: Action
+        request_url: Request URL
+        user_id: User ID
+        request_parameters: Request Parameters
+  shared:
+    show: Show
+    delete: Delete
+    delete_selected: Delete Selected Record(s)
+    back: Back
+    previous: Previous
+    next: Next
+    records_per_page: records per page
+    confirm_delete: Are you sure you want to delete this record?
+    confirm_delete_selected: Are you sure you want to delete the selected record(s)?
+    go: Go
+    refresh_after: Refresh this screen in
+    seconds: seconds
+  action_logs:
+    information: "Information of Action Log #%{id}"
+
