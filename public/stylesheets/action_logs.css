@@ -59,11 +59,11 @@ table.list th {
 }
 
 table.list tr.post {
-  color: lightcoral;
+  color: firebrick;
 }
 
 table.list tr.get {
-  color: mediumaquamarine;
+  color: darkcyan;
 }
 
 table.list tr.head {

@@ -1,4 +1,5 @@
 .rvmrc
+.git/*
 log/*
 tmp/*
 passenger.*
@@ -6,3 +7,4 @@ config/initializers/*
 config/environments/*
 config/*.yml
 config/*.rb
+script/*

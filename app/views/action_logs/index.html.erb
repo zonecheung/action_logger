@@ -32,7 +32,9 @@
         <td><%= action_log.created_at.strftime("%d %b %Y %H:%M:%S") %></td>
         <td><%= h action_log.remote_ip %></td>
         <td><%= h action_log.request_method %></td>
-        <td><%= link_to action_log.request_url, action_log.request_url %></td>
+        <td><%= link_to_if action_log.request_method.upcase == "GET",
+                           action_log.request_url, action_log.request_url,
+                           :target => "_blank" %></td>
         <td><%= h action_log.user_id %></td>
         <td><%= link_to image_tag("icons/info.png"), action_log_path(action_log) %></td>
         <td><%= link_to image_tag("icons/delete.png"), action_log_path(action_log),
@@ -43,6 +45,7 @@
 <% end %>
 <%= will_paginate @action_logs %>
 <% form_for :action_log, :url => action_logs_path, :html => { :method => :get, :id => "action_logs_form" } do |f| %>
+  <%= hidden_field_tag :page, params[:page] %>
   <div id="refresh">
     <%= I18n.t("shared.refresh_after") %>
     <%= text_field_tag :interval, params[:interval].blank? ? 30 : params[:interval], :size => 1, :maxlength => 5 %>
