@@ -35,8 +35,9 @@ If you want to authenticate the user using existing mechanism, just add this met
 
 In your controller:
 
-  log_request :only => [:index, :show]          # Log only :index and :show actions.
-  log_request :except => [:index, :show]        # Log all actions except :index and :show.
-  log_request :method => [:post]                # Log only POST call.
+  log_request :only => [:index, :show]          # Logs only :index and :show actions.
+  log_request :except => [:index, :show]        # Logs all actions except :index and :show.
+  log_request :method => [:post]                # Logs only POST call.
+  log_request :none            ]                # Logs nothing in current controller.
 
 Copyright (c) 2011 John Tjanaka, released under the MIT license
