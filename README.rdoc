@@ -22,6 +22,15 @@ Add these to your config/routes.rb if you wish view the action logs in the brows
     delete :destroy_selected, :on => :collection
   end
 
+If you want to authenticate the user using existing mechanism, just add this method to your application_controller.rb:
+
+  private
+
+  def action_logs_authentication
+    # Replace with your own code.
+    redirect_to home_url unless current_user && current_user.admin?
+  end
+
 == Example
 
 In your controller:

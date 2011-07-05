@@ -8,13 +8,16 @@ class ActionLogsController < ApplicationController
 
   log_request :none
 
+  before_filter :action_logs_authentication,
+                :if => Proc.new { |controller| controller.class.private_method_defined?(:action_logs_authentication) ||
+                                               controller.class.method_defined?(:action_logs_authentication) }
   before_filter :set_title
 
   # GET /action_logs
   # GET /action_logs.xml
   def index
     @action_logs = ActionLog.order("created_at DESC").
-                     paginate(:page => params[:page],
+                     paginate(:page     => params[:page].blank? ? 1 : params[:page],
                               :per_page => params[:per_page].blank? ? 20 : params[:per_page])
 
     respond_to do |format|
