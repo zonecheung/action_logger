@@ -1,4 +1,6 @@
 class ActionLogsController < ApplicationController
+  layout "action_logs"
+
   # GET /action_logs
   # GET /action_logs.xml
   def index
