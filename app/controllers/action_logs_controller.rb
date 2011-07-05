@@ -1,5 +1,14 @@
+require "action_logger/base"
+
 class ActionLogsController < ApplicationController
+  include ActionLogger::Base
   layout "action_logs"
+
+  protect_from_forgery
+
+  log_request :none
+
+  before_filter :set_title
 
   # GET /action_logs
   # GET /action_logs.xml
@@ -40,6 +49,12 @@ class ActionLogsController < ApplicationController
   def destroy_selected
     ActionLog.destroy_all(["id IN (?)", params[:action_logs] || []])
     redirect_to action_logs_url
+  end
+
+  private
+
+  def set_title
+    @title = I18n.t("activerecord.models.action_log")
   end
 end
 

@@ -16,6 +16,12 @@ In application_controller.rb:
   include ActionLogger::Base
   log_request
 
+Add these to your config/routes.rb if you wish view the action logs in the browser:
+
+  resources :action_logs, :only => [:index, :show, :destroy] do
+    delete :destroy_selected, :on => :collection
+  end
+
 == Example
 
 In your controller:
