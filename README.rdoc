@@ -40,4 +40,21 @@ In your controller:
   log_request :method => [:post]                # Logs only POST call.
   log_request :none            ]                # Logs nothing in current controller.
 
+New in version 3.0.1, added a rake task to dump the action logs in YAML format:
+
+  rake action_logger:dump
+  
+  Available options:
+  
+    start_date            format: 'yyyy-mm-dd'
+    end_date              format: 'yyyy-mm-dd'
+    start_time            format: 'yyyy-mm-dd HH:MM:SS'
+    end_time              format: 'yyyy-mm-dd HH:MM:SS'
+    method                available options: GET or POST
+    user_id               integer
+    filename              local or S3 filename with path
+    s3_access_key_id      S3 Access Key ID
+    s3_secret_access_key  S3 Secret Access Key
+    s3_bucket             S3 Bucket Name
+
 Copyright (c) 2011 John Tjanaka, released under the MIT license
