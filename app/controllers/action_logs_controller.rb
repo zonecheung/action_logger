@@ -6,7 +6,7 @@ class ActionLogsController < ApplicationController
 
   protect_from_forgery
 
-  log_request :none
+  skip_before_filter :log_current_request_action
 
   before_filter :action_logs_authentication,
                 :if => Proc.new { |controller| controller.class.private_method_defined?(:action_logs_authentication) ||
