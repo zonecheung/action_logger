@@ -35,10 +35,12 @@ If you want to authenticate the user using existing mechanism, just add this met
 
 In your controller:
 
-  log_request :only => [:index, :show]          # Logs only :index and :show actions.
-  log_request :except => [:index, :show]        # Logs all actions except :index and :show.
-  log_request :method => [:post]                # Logs only POST call.
-  log_request :none            ]                # Logs nothing in current controller.
+  # Logs only POST call.
+  before_filter :log_current_request_action,
+                :if => Proc.new { |controller| controller.request.method == "POST" }
+
+  # Skip logging for current controller, in case you put the code above in application_controller.rb.
+  skip_before_filter :log_current_request_action
 
 New in version 3.0.1, added a rake task to dump the action logs in YAML format:
 
