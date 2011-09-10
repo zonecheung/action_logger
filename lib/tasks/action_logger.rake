@@ -49,7 +49,7 @@ namespace :action_logger do
         when Hash
           recursively_convert_utf_content(value)
         when String
-          ic.iconv(value)
+          ic.iconv(value + " ")[0..-2]  # Add a space and remove it back to prevent error.
         else
           value
         end
