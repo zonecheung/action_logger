@@ -1,4 +1,5 @@
 require "aws/s3"
+require "iconv"
 
 namespace :action_logger do
   desc "Add the Database Tables needed for ActionLogger"
@@ -41,6 +42,21 @@ namespace :action_logger do
 
   desc "Dump action_logs to YAML file"
   task :dump => [:environment] do
+    def recursively_convert_utf_content(attrs)
+      ic = Iconv.new('UTF-8//IGNORE', 'UTF-8')
+      attrs.each do |key, value|
+        attrs[key] = case attrs[value]
+        when Hash
+          recursively_convert_utf_content(attrs[value])
+        when String
+          ic.iconv(attrs[value])
+        else
+          attrs[value]
+        end
+      end
+      attrs
+    end
+
     conditions = ["1=1"]
     # Assign conditions.
     unless ENV["start_date"].blank? 
@@ -81,6 +97,7 @@ namespace :action_logger do
     end
     
     ActionLog.find_each(:conditions => conditions) do |action_log|
+      action_log.request_parameters = recursively_convert_utf_content(action_log.request_parameters)
       # Output record id first, this only has effect on Ruby 1.9.
       yaml = { "id" => action_log.id }.merge(action_log.attributes).to_yaml
       unless file.nil?
