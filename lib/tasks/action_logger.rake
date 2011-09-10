@@ -45,13 +45,13 @@ namespace :action_logger do
     def recursively_convert_utf_content(attrs)
       ic = Iconv.new('UTF-8//IGNORE', 'UTF-8')
       attrs.each do |key, value|
-        attrs[key] = case attrs[value]
+        attrs[key] = case value
         when Hash
-          recursively_convert_utf_content(attrs[value])
+          recursively_convert_utf_content(value)
         when String
-          ic.iconv(attrs[value])
+          ic.iconv(value)
         else
-          attrs[value]
+          value
         end
       end
       attrs
