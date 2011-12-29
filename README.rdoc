@@ -14,7 +14,7 @@ To create the action_logs table after the gem is installed:
 In application_controller.rb:
 
   include ActionLogger::Base
-  log_request
+  before_filter :log_current_request_action
 
 Add these to your config/routes.rb if you wish view the action logs in the browser:
 
