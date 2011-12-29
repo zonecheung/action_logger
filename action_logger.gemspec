@@ -13,8 +13,8 @@ Gem::Specification.new do |s|
   s.rubyforge_project         = "action_logger"
   s.required_rubygems_version = "> 1.3.6"
 
-  s.add_dependency "activesupport" , "~> 3.0.0"
-  s.add_dependency "rails"         , "~> 3.0.0"
+  s.add_dependency "activesupport" , "=> 3.0.0"
+  s.add_dependency "rails"         , "=> 3.0.0"
   s.add_dependency "aws-s3"
 
   s.files = `git ls-files`.split("\n")
